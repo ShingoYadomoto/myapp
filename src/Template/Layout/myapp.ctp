@@ -14,26 +14,26 @@
 </head>
 <body>
 <header>
-    <?= '思い込み.com'; ?>
+    <?= 'Belief.com'; ?>
 <!--    <div class="headers"> -->
         <?php
             echo $this->Html->link('Top',
                     ['controller' => 'Themes' , 'action' => 'index'],
                     ['class' => 'header']            
         );
-            echo $this->Html->link('最新',
+            echo $this->Html->link('New!',
                     ['controller' => 'Votes' , 'action' => 'vote' , 1],
                     ['class' => 'header']
         );
-            echo $this->Html->link('話題',
+            echo $this->Html->link('Hot!',
                     ['controller' => 'Themes' , 'action' => 'index'],
                     ['class' => 'header']
         );
-            echo $this->Html->link('意見別',
+            echo $this->Html->link('Div',
                     ['controller' => 'Themes' , 'action' => 'index'],
                     ['class' => 'header']
         );
-            echo $this->Html->link('書く',
+            echo $this->Html->link('Post',
                     ['controller' => 'Themes' , 'action' => 'add'],
                     ['class' => 'header']
         );

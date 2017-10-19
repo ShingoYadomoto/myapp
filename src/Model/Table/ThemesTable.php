@@ -37,7 +37,9 @@ class ThemesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-    }
+        $this->hasMany('Votes')
+             ->setForeignKey('theme_id');
+     }
 
     /**
      * Default validation rules.
@@ -53,19 +55,19 @@ class ThemesTable extends Table
 
         $validator
             ->scalar('job')
-            ->allowEmpty('job');
+            ->notEmpty('job');
 
         $validator
             ->scalar('age')
-            ->allowEmpty('age');
+            ->notEmpty('age');
 
         $validator
             ->scalar('sex')
-            ->allowEmpty('sex');
+            ->notEmpty('sex');
 
         $validator
             ->scalar('body')
-            ->allowEmpty('body');
+            ->notEmpty('body');
 
         $validator
             ->integer('opinion')

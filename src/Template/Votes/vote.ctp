@@ -1,27 +1,50 @@
-<h1 class="title">Judge</h1>
-<h1 class = "judgeTheme"><?= $theme->body ?></h1>
-
-<?= $this->Form->create($vote); ?>
-<div class = "radioOpinion">
-    <?= $this->Form->radio('opinion',
-         ['1,「賛成」' , '2,「賛成」だが、今まで反対だった' , '3,「反対」だが今まで賛成だった' , '4,「反対」']
-         );
-     ?>
+<div class="pageTop">
+<h1>投票</h1>
 </div>
 
-<div class = "radioSex">
-    <?= $this->Form->radio('sex',
-         ['無回答' , '男性' , '女性' , 'その他']
-         );
-     ?>
-</div>
+<div class='vote_form'>
+    <h1 class = "judgeTheme"><?= $theme->body ?></h1>
 
-<?php
-    echo $this->Form->select('age',
-         ['無回答','20歳未満','20代','30代','40代','50代','60代','70代','80代'],
-         ['empty' => '年齢']
-         );
-    echo $this->Form->button(__('投票する！'));
-    echo $this->Form->end();
-    echo $this->Html->link('Topに戻る', ['action' => 'index'])
-?>
+    <?= $this->Form->create($vote); ?>
+        <div class = "radioOpinion">
+            <?= $this->Form->radio('opinion',
+                 ['1,「賛成」' => '1,「賛成」' , '2,「賛成」だが、今まで反対だった' => '2,「賛成」だが、今まで反対だった',
+                  '3,「反対」だが今まで賛成だった' => '3,「反対」だが今まで賛成だった' , '4,「反対」' => '4,「反対」']
+                 );
+             ?>
+        </div>
+
+        <div class = "radioSex">
+            <?= $this->Form->radio('sex',
+                 ['男性'=>'男性', '女性'=>'女性', 'その他'=>'その他', '無回答'=>'無回答']
+                 );
+            ?>
+        </div>
+
+        <?= $this->Form->hidden('theme_id' , ['value' => $this->request->params['pass'][0]]); ?>
+
+        <div class="selectbox">
+            <?= $this->Form->select('age',
+                 ['20歳未満'=>'20歳未満', '20代'=>'20代','30代'=>'30代', '40代'=>'40代', '50代'=>'50代', '60代'=>'60代', '70代'=>'70代', '80代'=>'80代', '無回答'=>'無回答'],
+                 ['empty' => '年齢']
+                 );
+            ?>
+        </div>
+
+        <div class="selectbox">
+             <?= $this->Form->select('job',
+                 ['学生'=>'学生', '製造業'=>'製造業', '建築業'=>'建築業', '設備業'=>'設備業', '運輸業'=>'運輸業', '流通業'=>'流通業',
+                  '農林水産業'=>'農林水産業', '印刷・出版業'=>'印刷・出版業', '金融業・保険業'=>'金融業・保険業', '不動産業'=>'不動産業','IT・情報通信業'=>'IT・情報通信業',
+                  'サービス業'=>'サービス業', '教育・研究機関'=>'教育・研究機関', '病院・医療機関'=>'病院・医療機関', '官公庁・自治体'=>'官公庁・自治体',
+                  '法人団体'=>'法人団体', 'その他の業種'=>'その他の業種', '無回答'=>'無回答'],
+                 ['empty' => '職業']
+                 );
+            ?>
+        </div>
+        <div>
+            <?= $this->Form->button(__('投稿する')); ?>
+        </div>
+    <?= $this->Form->end(); ?>
+</div>
+<?= $this->Html->link('Topに戻る', ['action' => 'index']) ?>
+

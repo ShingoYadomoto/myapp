@@ -40,9 +40,9 @@ class VotesTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Themes', [
-            'foreignKey' => 'theme_id'
-        ]);
+        $this->belongsTo('Themes')
+             ->setForeignKey('theme_id')
+             ->setJoinType('INNER');
     }
 
     /**
@@ -58,24 +58,16 @@ class VotesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('job')
             ->allowEmpty('job');
 
         $validator
-            ->scalar('age')
             ->allowEmpty('age');
 
         $validator
-            ->scalar('sex')
             ->allowEmpty('sex');
 
         $validator
-            ->scalar('body')
-            ->allowEmpty('body');
-
-        $validator
-            ->integer('opinion')
-            ->allowEmpty('opinion');
+            ->notEmpty('opinion');
 
         return $validator;
     }

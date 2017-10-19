@@ -14,7 +14,7 @@
 </head>
 <body>
 <header>
-    <?= 'Belief.com'; ?>
+    <?= 'Supreme'; ?>
 <!--    <div class="headers"> -->
         <?php
             echo $this->Html->link('Top',
@@ -22,11 +22,11 @@
                     ['class' => 'header']            
         );
             echo $this->Html->link('New!',
-                    ['controller' => 'Votes' , 'action' => 'vote' , 1],
+                    ['controller' => 'Themes' , 'action' => 'index' , '#' => 'New'],
                     ['class' => 'header']
         );
             echo $this->Html->link('Hot!',
-                    ['controller' => 'Themes' , 'action' => 'index'],
+                    ['controller' => 'Themes' , 'action' => 'index' , '#' => 'Hot'],
                     ['class' => 'header']
         );
             echo $this->Html->link('Div',

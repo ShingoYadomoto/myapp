@@ -16,6 +16,8 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 
 /**
  * Application Controller
@@ -40,6 +42,8 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
+
+        $this->viewBuilder()->layout('myapp');
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');

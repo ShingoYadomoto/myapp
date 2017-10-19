@@ -11,17 +11,22 @@ class ThemesController extends AppController
 
     public function initialize()
     {
-        parent::initialize();
-        $this->viewBuilder()->layout('myapp');
-        $this->loadComponent('Flash');
+       parent::initialize();
     }
 
     public function index()
     {
-       $this->set('themes', $this->Themes->find('all'));
+       $themes_query = $this->Themes->find();
+       $new_themes = $this->Themes->find()->order(['Themes.created' => 'DESC']); 
+
+       $hot_themes = $themes_query->select(['body','total_votes' => $themes_query->func()->count('Votes.theme_id')])
+                                 ->leftJoinwith('Votes')
+                                 ->group('Themes.id')
+                                 ->order(['total_votes' => 'DESC']);
+
+       $this->set(compact('new_themes', 'hot_themes'));
     }
 
-//add
     public function add()
     {
         $theme = $this->Themes->newEntity();
@@ -31,21 +36,19 @@ class ThemesController extends AppController
                 $this->Flash->success(__('テーマを登録できました。'));
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('Unable to add your post.'));
+            $this->Flash->error(__('テーマを登録できませんでした。'));
         }
         $this->set(compact('theme'));
     }
-//
 
-//delete
     public function delete($id)
     {
         $this->request->allowMethod(['theme', 'delete']);
-   $theme = $this->Themes->get($id);
+        $theme = $this->Themes->get($id);
         if ($this->Themes->delete($theme)) {
-            $this->Flash->success(__('The article with id: {0} has been deleted.', h($id)));
+            $this->Flash->success(__('記事 id: {0} を削除しました。', h($id)));
             return $this->redirect(['action' => 'index']);
         }
     }
-//
+
 }

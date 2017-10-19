@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Germania+One');
 @import url('https://fonts.googleapis.com/css?family=Pangolin');
 
+head{
+    text-align: center;
+}
+
 body {
     background: #F2F2F2;
     font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
@@ -28,13 +32,32 @@ h1.judgeTheme{
     text-align: center;
     font-size: 70px !important;
     color: #DA81F5;
+    font-size: 20px;
     margin: 50px !important;
 }
 
-form {
-  margin: 0px 50px 0px 50px;
+/* ページ上部のページタイトル */
+
+.pageTop{
+    text-align: center;
+    width: 75%;
+    padding: 0.5em 1em;
+    margin: 2em auto;
+    background: #c6e4ff;
+    border-bottom: solid 6px #aac5de;
+    border-radius: 9px;
 }
 
+.pageTop h1{
+    margin: 0;
+    padding: 0;
+    color: #5989cf;
+    font-size: 20px;
+}
+
+/*****************************/
+
+/* テーブル */
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -45,36 +68,84 @@ div.themes_table{
   margin: 30px;
   padding: 10px;
   background: white;
-  border: inset 2px #ff0000;
+  border: ridge 4px #A4A4A4;
 }
 
 td,
 th {
     padding: 0;
 }
+/*************/
+
+/*フォーム*/
+
+form {
+    margin: 40px 50px 20px 50px;
+}
+
+div.theme_form{
+      margin: 30px;
+      padding: 10px;
+      background: white;
+      border: ridge 4px #A4A4A4;
+}
+
+div.vote_form{
+      margin: 30px;
+      padding: 10px;
+      background: white;
+      border: ridge 4px #A4A4A4;
+}
+
+div.selectbox{
+  display: inline-block;
+  position: static;
+  width: 20%;
+}
 
 div.radioOpinion label{
     font-size: 20px;
     display: inline-block;
     margin-bottom: 30px;
+    margin: auto;;
 }
 
 div.radioSex label{
     display: inline-block;
     margin: 10px;
 }
+/*********/
 
-head{
-    text-align: center;
+/* 結果グラフ */
+
+.graph {
+    position: relative; /* IE is dumb */
+    width: 300px;
+    border: 1px solid #207870;
+    padding: 2px;
 }
+.graph .bar {
+    display: block;
+    position: relative;
+    background: #409890;
+    text-align: center;
+    color: #f0ffff;
+    height: 2em;
+    line-height: 2em;
+}
+.graph .bar span { position: absolute; left: 1em; }
 
+/**************/
 
 /* ヘッダー */
 header{
   background: black;
   font-size: 30px;
   color: white;
-  font-family: 'Germania One';
+  font-family: "Futura-CondensedExtraBold", Futura, sans-serif;
+  font-stretch: condensed;
+  font-weight: bold;
+  font-style: italic;
   margin: 0px;
   padding: 10px 0;
   height: 65px;

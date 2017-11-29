@@ -25,4 +25,4 @@
     </table>
 </div>
 
-<?= $this->Html->link('Topに戻る', ['action' => 'index']) ?>
+<?= $this->Html->link('Topに戻る', ['controller' => 'Themes', 'action' => 'index']) ?>

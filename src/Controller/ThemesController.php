@@ -19,7 +19,7 @@ class ThemesController extends AppController
        $themes_query = $this->Themes->find();
        $new_themes = $this->Themes->find()->order(['Themes.created' => 'DESC']); 
 
-       $hot_themes = $themes_query->select(['body','total_votes' => $themes_query->func()->count('Votes.theme_id')])
+       $hot_themes = $themes_query->select(['id', 'body', 'total_votes' => $themes_query->func()->count('Votes.theme_id')])
                                  ->leftJoinwith('Votes')
                                  ->group('Themes.id')
                                  ->order(['total_votes' => 'DESC']);

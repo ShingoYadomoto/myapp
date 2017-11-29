@@ -23,7 +23,6 @@ class ThemesController extends AppController
                                  ->leftJoinwith('Votes')
                                  ->group('Themes.id')
                                  ->order(['total_votes' => 'DESC']);
-
        $this->set(compact('new_themes', 'hot_themes'));
     }
 
